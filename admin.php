@@ -63,88 +63,7 @@ $order_result = $conn->query($order_sql);
     <meta charset="UTF-8">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .btn {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #218838;
-        }
-        .toggle-button {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .toggle-button:hover {
-            background-color: #0056b3;
-        }
-        .hidden {
-            display: none;
-        }
-    </style>
-    <script>
-        function toggleForm(formId) {
-            var form = document.getElementById(formId);
-            if (form.style.display === "none" || form.style.display === "") {
-                form.style.display = "block";
-            } else {
-                form.style.display = "none";
-            }
-        }
-
-        function openEditForm(productId) {
-            var forms = document.getElementsByClassName('editProductForm');
-            for (var i = 0; i < forms.length; i++) {
-                forms[i].style.display = "none"; // Alle Formulare schließen
-            }
-            var form = document.getElementById('editProductForm_' + productId);
-            form.style.display = "block"; // Das spezifische Formular öffnen
-        }
-    </script>
+    <link rel="stylesheet" href="styles.css"> <!-- Neues CSS-Stylesheet -->
 </head>
 <body>
 
@@ -223,7 +142,7 @@ $order_result = $conn->query($order_sql);
                             <label for="image">Bild-URL</label>
                             <input type="text" name="image" value="<?php echo $row['image']; ?>" required>
                         </div>
-                        <button type="submit" name="update_product" class="btn" onclick="document.getElementById('editProductForm_<?php echo $row['id']; ?>').style.display='none';">Produkt aktualisieren</button>
+                        <button type="submit" name="update_product" class="btn">Produkt aktualisieren</button>
                     </form>
                 </div>
             </td>
@@ -244,7 +163,7 @@ $order_result = $conn->query($order_sql);
             <th>E-Mail</th>
             <th>Telefon</th>
             <th>Status</th>
- <th>Bestelldatum</th>
+            <th>Bestelldatum</th>
         </tr>
     </thead>
     <tbody>
@@ -256,12 +175,13 @@ $order_result = $conn->query($order_sql);
             <td><?php echo $order['address']; ?></td>
             <td><?php echo $order['email']; ?></td>
             <td><?php echo $order['mobile']; ?></td>
-			<td><?php echo $order['order_status']; ?></td>
+            <td><?php echo $order['order_status']; ?></td>
             <td><?php echo date('d.m.Y H:i', strtotime($order['order_at'])); ?></td>
         </tr>
         <?php endwhile; ?>
     </tbody>
 </table>
 
+<script src="script.js"></script> <!-- Neues JavaScript-File -->
 </body>
 </html>

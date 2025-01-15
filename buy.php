@@ -3,6 +3,6 @@
 // Zum Beispiel: Bestellbestätigung, Zahlungsabwicklung, etc.
 
 $id = $_GET['id'];
-echo "Vielen Dank für Ihren Kauf des Produkts mit der ID: " . $id;
+echo "<h1>Vielen Dank für Ihren Kauf des Produkts mit der ID: " . $id . "</h1>";
 ?>
 <a href="index.php">Zurück zum Shop</a>
